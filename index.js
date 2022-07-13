@@ -4,6 +4,7 @@
 let handleClick = function () {
     let keyString = this.innerHTML;
     playDrum(keyString);
+    buttonAnimation(keyString);
 }
 
 /**
@@ -13,6 +14,7 @@ let handleClick = function () {
 let handleKeyPress = function  (event) {
     let keyString = event.key;
     playDrum(keyString);
+    buttonAnimation(keyString);
 }
 
 /**
@@ -52,6 +54,19 @@ let playDrum = function (keyString) {
         default:
             console.log("Unknown key '" + keyString + "' is activated.");
     }
+}
+
+/**
+ * Animate the pressed button
+ * @param {String} keyString    Key character
+ */
+let buttonAnimation = function(keyString) {
+    let activeButton = document.querySelector("." + keyString);
+    activeButton.classList.add("pressed");
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    },
+        100)
 }
 
 // Select all buttons with the class .drum
